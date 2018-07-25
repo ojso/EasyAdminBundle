@@ -43,7 +43,7 @@ final class CacheConfigManager implements ConfigManagerInterface, CacheWarmerInt
             return $this->configManager->getBackendConfig($propertyPath);
         }
 
-        $item = $this->cache->getItem(self::CACHE_KEY);
+        $item = $this->cache->getItem($propertyPath ? $propertyPath : self::CACHE_KEY);
 
         if (!$item->isHit()) {
             $item->set($this->configManager->getBackendConfig($propertyPath));
